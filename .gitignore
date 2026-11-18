@@ -1,3 +1,9 @@
 target/
 out/
 *.class
+.idea/
+.vscode/
+*.db
+*.mv.db
+*.trace.db
+data/

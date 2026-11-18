@@ -2,7 +2,7 @@
 -- Unique columns support FR19 (no duplicate username / ID number / registration number)
 -- and FR14 (one interest payment per account per month).
 
-CREATE TABLE customer (
+CREATE TABLE IF NOT EXISTS customer (
     customer_id          VARCHAR(20)   PRIMARY KEY,
     customer_type        VARCHAR(12)   NOT NULL,            -- INDIVIDUAL or ORGANISATION
     username             VARCHAR(50)   NOT NULL UNIQUE,
@@ -19,14 +19,14 @@ CREATE TABLE customer (
     contact_person       VARCHAR(100)
 );
 
-CREATE TABLE employment_details (
+CREATE TABLE IF NOT EXISTS employment_details (
     customer_id       VARCHAR(20)   PRIMARY KEY,
     employer_name     VARCHAR(100)  NOT NULL,
     employer_address  VARCHAR(200)  NOT NULL,
     FOREIGN KEY (customer_id) REFERENCES customer (customer_id)
 );
 
-CREATE TABLE account (
+CREATE TABLE IF NOT EXISTS account (
     account_number  VARCHAR(20)    PRIMARY KEY,
     account_type    VARCHAR(12)    NOT NULL,                -- SAVINGS, INVESTMENT or CHEQUE
     branch          VARCHAR(50)    NOT NULL,
@@ -35,7 +35,8 @@ CREATE TABLE account (
     FOREIGN KEY (customer_id) REFERENCES customer (customer_id)
 );
 
-CREATE TABLE bank_transaction (
+CREATE TABLE IF NOT EXISTS bank_transaction (
+    seq               BIGINT         AUTO_INCREMENT NOT NULL,  -- keeps history in insertion order
     transaction_id    VARCHAR(40)    PRIMARY KEY,
     account_number    VARCHAR(20)    NOT NULL,
     type              VARCHAR(12)    NOT NULL,              -- DEPOSIT, WITHDRAWAL or INTEREST
@@ -46,7 +47,7 @@ CREATE TABLE bank_transaction (
     FOREIGN KEY (account_number) REFERENCES account (account_number)
 );
 
-CREATE TABLE interest_payment (
+CREATE TABLE IF NOT EXISTS interest_payment (
     payment_id      VARCHAR(40)    PRIMARY KEY,
     account_number  VARCHAR(20)    NOT NULL,
     period          VARCHAR(7)     NOT NULL,                -- e.g. 2026-11
