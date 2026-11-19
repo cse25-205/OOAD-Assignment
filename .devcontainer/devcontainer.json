@@ -2,8 +2,12 @@
   "name": "Banking System",
   "image": "mcr.microsoft.com/devcontainers/java:1-21-bookworm",
   "features": {
-    "ghcr.io/devcontainers/features/java:1": { "version": "21", "installMaven": "true" },
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "none",
+      "installMaven": true
+    },
     "ghcr.io/devcontainers/features/desktop-lite:1": {}
   },
   "forwardPorts": [6080]
 }
+
