@@ -1,1 +1,10 @@
-cat .devcontainer/devcontainer.json
+cat > .devcontainer/devcontainer.json <<'EOF'
+{
+  "name": "Banking System",
+  "image": "mcr.microsoft.com/devcontainers/java:1-21-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/desktop-lite:1": {}
+  },
+  "forwardPorts": [6080]
+}
+EOF
