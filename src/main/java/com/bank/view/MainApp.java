@@ -23,9 +23,8 @@ public class MainApp extends Application implements Navigator {
     @Override
     public void start(Stage primaryStage) {
         stage = primaryStage;
-        Database.init();
         app = new AppContext();
-        SampleDataLoader.loadIfEmpty(app.customerDAO(), app.accountDAO());
+        app.start();
 
         scheduler = new InterestScheduler(app.interest());
         scheduler.start();
