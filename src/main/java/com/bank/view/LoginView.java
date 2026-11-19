@@ -6,7 +6,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -21,7 +20,7 @@ public class LoginView extends VBox {
 
         TextField username = new TextField();
         username.setPromptText("Username");
-        PasswordField password = new PasswordField();
+        PasswordToggleField password = new PasswordToggleField();
         password.setPromptText("Password");
         Label feedback = Ui.errorLabel();
         feedback.setText(message == null ? "" : message);
@@ -29,7 +28,7 @@ public class LoginView extends VBox {
         GridPane form = new GridPane();
         form.setHgap(10);
         form.setVgap(10);
-        form.setMaxWidth(380);
+        form.setMaxWidth(420);
         form.addRow(0, new Label("Username"), username);
         form.addRow(1, new Label("Password"), password);
 
@@ -50,6 +49,6 @@ public class LoginView extends VBox {
         register.setOnAction(e -> navigator.showRegister());
 
         getChildren().addAll(Ui.title("Banking System"), new Label("Please log in to continue"),
-                form, login, feedback, register);
+                form, login, feedback, register, new ThemePicker(navigator));
     }
 }

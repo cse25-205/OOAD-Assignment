@@ -30,7 +30,7 @@ Run with `mvn clean test`. Paste the final summary of that command in the Result
 | IT13 | Use accounts after logout | Rejected | FR2, FR18 | |
 | IT14 | Idle 4 min, then 10 min | Valid at 4, ended at 10 | NFR Security | |
 | IT15 | Run interest twice for one month, then next month | 0.50 and 50.00 once; second run credits nothing; Cheque none | FR11, FR14 | |
-| IT16 | Load sample data twice, log in as sample user | 5 customers, 9 accounts, loaded once | Brief: sample records | |
+| IT16 | Load sample data twice, log in as sample user | 10 customers, 17 accounts, loaded once | Brief: sample records | |
 
 ## Results
 

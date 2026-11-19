@@ -27,11 +27,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-/**
- * Integration tests: controller -> model -> DAO -> (in-memory H2) database.
- * The GUI is the thin layer above the controllers, so each test starts at the controller
- * exactly as a JavaFX screen would call it.
- */
 class BankingIntegrationTest {
     private AppContext app;
 
@@ -241,11 +236,11 @@ class BankingIntegrationTest {
     void IT16_sampleDataLoadsOnceAndTheSampleUsersCanLogIn() {
         SampleDataLoader.loadIfEmpty(app.customerDAO(), app.accountDAO());
         SampleDataLoader.loadIfEmpty(app.customerDAO(), app.accountDAO());
-        assertEquals(5, app.customerDAO().count());
-        assertEquals(9, app.accountDAO().count());
-        app.login().login("thato", SampleDataLoader.SAMPLE_PASSWORD);
+        assertEquals(10, app.customerDAO().count());
+        assertEquals(17, app.accountDAO().count());
+        app.login().login("resego", SampleDataLoader.SAMPLE_PASSWORD);
         assertEquals(3, app.accounts().listAccounts().size());
-        assertNotNull(app.customerDAO().findByUsername("kalahari"));
+        assertNotNull(app.customerDAO().findByUsername("dube"));
         assertNull(app.customerDAO().findByUsername("ghost"));
     }
 }

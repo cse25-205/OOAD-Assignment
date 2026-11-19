@@ -1,0 +1,6 @@
+/* Botswana Blue - light, based on the flag's blue */
+.root {
+    -fx-base: #eef3f9; -fx-background: #f4f8fc; -fx-control-inner-background: #ffffff;
+    -fx-accent: #3b82c4; -fx-focus-color: #3b82c4; -fx-faint-focus-color: #3b82c422;
+    -app-primary: #1f4e79; -app-on-primary: #ffffff; -app-primary-text: #1f4e79; -app-error: #b00020;
+}

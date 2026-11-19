@@ -58,7 +58,8 @@ public class DashboardView extends BorderPane {
             login.logout();
             navigator.showLogin("You have been logged out.");
         });
-        HBox top = new HBox(12, welcome, spacer, logout);
+        HBox top = new HBox(16, welcome, spacer, new ThemePicker(navigator), logout);
+        top.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
         top.setPadding(new Insets(16));
         setTop(top);
 

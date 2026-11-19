@@ -11,7 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -32,7 +31,7 @@ public class RegisterView extends ScrollPane {
         ComboBox<String> type = new ComboBox<>(FXCollections.observableArrayList("Individual", "Organisation"));
         type.setValue("Individual");
         TextField username = new TextField();
-        PasswordField password = new PasswordField();
+        PasswordToggleField password = new PasswordToggleField();
         password.setPromptText("At least 8 characters");
         TextField address = new TextField();
         TextField contact = new TextField();

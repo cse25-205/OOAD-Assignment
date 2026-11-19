@@ -12,7 +12,7 @@ import com.bank.model.Withdrawable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-/** Inserts demonstration data (5 customers, 9 accounts, many transactions) when the database is empty. */
+//Inserts demonstration data (10 customers, 17 accounts, many transactions) when the database is empty.
 public final class SampleDataLoader {
     public static final String SAMPLE_PASSWORD = "Bank@2026";
     private static final String BRANCH = "Gaborone Main";
@@ -23,26 +23,50 @@ public final class SampleDataLoader {
         if (customers.count() > 0) {
             return;
         }
-        IndividualCustomer thato = person(customers, "C0000001", "thato", "Thato", "Molefe", "880101123",
-                "Plot 12, Gaborone", "71234567", new EmploymentDetails("Choppies Enterprises", "Broadhurst, Gaborone"));
-        IndividualCustomer neo = person(customers, "C0000002", "neo", "Neo", "Kgosi", "920505456",
-                "Block 8, Francistown", "72345678", null);
-        IndividualCustomer kabo = person(customers, "C0000003", "kabo", "Kabo", "Sebina", "850303789",
-                "Jwaneng Ext 3", "73456789", new EmploymentDetails("Debswana", "Jwaneng Mine, Jwaneng"));
-        OrganisationCustomer kalahari = organisation(customers, "C0000004", "kalahari", "Kalahari Traders (Pty) Ltd",
-                "BW00001234567", LocalDate.of(2015, 6, 1), "Plot 55, Maun", "6861234", "Mpho Dube");
-        OrganisationCustomer baobab = organisation(customers, "C0000005", "baobab", "Baobab Holdings",
-                "BW00007654321", LocalDate.of(2019, 2, 14), "Main Mall, Gaborone", "3951234", "Lorato Phiri");
+        // person(dao, customerId, USERNAME, first name, surname, ID number, address, phone, employer)
+        // organisation(dao, customerId, USERNAME, ORGANISATION NAME, registration number, date, address, phone, contact person)
+        // A username must be lowercase with no spaces.
+        IndividualCustomer resego = person(customers, "C0000001", "resego", "Resego", "Moremi", "881014201",
+                "Plot 1204, Gaborone West", "71230001", new EmploymentDetails("Botswana Power Corporation", "Motlakase House, Gaborone"));
+        IndividualCustomer faith = person(customers, "C0000002", "faith", "Faith", "Smith", "900322118",
+                "Block 6, Francistown", "72340002", new EmploymentDetails("Mascom Wireless", "Plot 50676, Gaborone"));
+        IndividualCustomer kagiso = person(customers, "C0000003", "kagiso", "Kagiso", "Baker", "950607334",
+                "Ward 4, Molepolole", "73450003", null);
+        IndividualCustomer layla = person(customers, "C0000004", "layla", "Layla", "Ontatlhile", "870911456",
+                "Extension 9, Palapye", "74560004", new EmploymentDetails("Water Utilities Corporation", "Palapye Branch"));
+        IndividualCustomer tumelo = person(customers, "C0000005", "tumelo", "Tumelo", "Kgathi", "930218572",
+                "Phase 2, Maun", "75670005", null);
+        IndividualCustomer davidson = person(customers, "C0000006", "davidson", "Davidson", "Modise", "840430689",
+                "Area W, Selebi-Phikwe", "76780006", new EmploymentDetails("First National Bank Botswana", "Main Mall, Francistown"));
+        IndividualCustomer sarona = person(customers, "C0000007", "sarona", "Sarona", "Arends", "970105791",
+                "Ward 12, Kanye", "77890007", null);
+        OrganisationCustomer dube = organisation(customers, "C0000008", "dube",
+                "Dube Holdings", "BW00001234501", LocalDate.of(2015, 6, 1),
+                "Plot 55, Maun", "6861234", "Mpho Dube");
+        OrganisationCustomer innovate = organisation(customers, "C0000009", "innovate",
+                "Innovate Hub", "BW00002345602", LocalDate.of(2018, 3, 12),
+                "Industrial Site, Lobatse", "5332345", "Oratilwe Sebego");
+        OrganisationCustomer evergreen = organisation(customers, "C0000010", "evergreen",
+                "Evergreen Ventures", "BW00003456703", LocalDate.of(2021, 9, 20),
+                "Fairgrounds Office Park, Gaborone", "3903456", "Gosego Mothusi");
 
-        save(accounts, new SavingsAccount("1000000001", BRANCH, thato), null, "2500.00", "30.00");
-        save(accounts, new InvestmentAccount("1000000002", BRANCH, thato, bd("1000.00")), "200.00");
-        save(accounts, new ChequeAccount("1000000003", BRANCH, thato), null, "8500.00", "1200.00");
-        save(accounts, new SavingsAccount("1000000004", BRANCH, neo), null, "1200.00", "100.00");
-        save(accounts, new ChequeAccount("1000000005", BRANCH, kabo), null, "5000.00", "750.00");
-        save(accounts, new InvestmentAccount("1000000006", BRANCH, kabo, bd("700.00")), null);
-        save(accounts, new SavingsAccount("1000000007", BRANCH, kalahari), null, "20000.00", "5000.00");
-        save(accounts, new InvestmentAccount("1000000008", BRANCH, kalahari, bd("15000.00")), "1000.00", "2500.00");
-        save(accounts, new SavingsAccount("1000000009", BRANCH, baobab), null, "3000.00");
+        save(accounts, new SavingsAccount("1000000001", BRANCH, resego), null, "3200.00", "150.00");
+        save(accounts, new InvestmentAccount("1000000002", BRANCH, resego, bd("1500.00")), "300.00");
+        save(accounts, new ChequeAccount("1000000003", BRANCH, resego), null, "12000.00");
+        save(accounts, new ChequeAccount("1000000004", BRANCH, faith), "1800.00", "9500.00");
+        save(accounts, new SavingsAccount("1000000005", BRANCH, faith), null, "800.00");
+        save(accounts, new SavingsAccount("1000000006", BRANCH, kagiso), null, "2100.00", "400.00");
+        save(accounts, new ChequeAccount("1000000007", BRANCH, layla), "900.00", "7600.00");
+        save(accounts, new InvestmentAccount("1000000008", BRANCH, layla, bd("2000.00")), null, "500.00");
+        save(accounts, new SavingsAccount("1000000009", BRANCH, tumelo), null, "1500.00");
+        save(accounts, new InvestmentAccount("1000000010", BRANCH, tumelo, bd("650.00")), null);
+        save(accounts, new ChequeAccount("1000000011", BRANCH, davidson), "600.00", "6400.00");
+        save(accounts, new SavingsAccount("1000000012", BRANCH, sarona), null, "950.00");
+        save(accounts, new SavingsAccount("1000000013", BRANCH, dube), null, "25000.00", "4000.00");
+        save(accounts, new InvestmentAccount("1000000014", BRANCH, dube, bd("18000.00")), "2500.00");
+        save(accounts, new SavingsAccount("1000000015", BRANCH, innovate), null, "6200.00");
+        save(accounts, new SavingsAccount("1000000016", BRANCH, evergreen), null, "3300.00");
+        save(accounts, new InvestmentAccount("1000000017", BRANCH, evergreen, bd("5000.00")), null, "1000.00");
     }
 
     private static IndividualCustomer person(CustomerDAO dao, String id, String username, String first, String surname,
@@ -63,10 +87,6 @@ public final class SampleDataLoader {
         return c;
     }
 
-    /**
-     * Builds the account's history in memory (optional withdrawal first argument, then deposits), then
-     * saves the account and all of its transactions in one go.
-     */
     private static void save(AccountDAO accounts, Account account, String withdrawal, String... deposits) {
         for (String deposit : deposits) {
             if (deposit != null) {

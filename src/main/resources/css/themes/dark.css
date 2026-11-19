@@ -1,0 +1,6 @@
+/* Dark Mode - easy on the eyes */
+.root {
+    -fx-base: #2b2f36; -fx-background: #1e2127; -fx-control-inner-background: #2b2f36;
+    -fx-accent: #2a9d8f; -fx-focus-color: #2a9d8f; -fx-faint-focus-color: #2a9d8f22;
+    -app-primary: #2a9d8f; -app-on-primary: #ffffff; -app-primary-text: #5ed0c4; -app-error: #ff6b6b;
+}

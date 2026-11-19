@@ -9,9 +9,6 @@ import javafx.beans.property.SimpleStringProperty;
 
 /** Small helpers so every screen uses the same labels, buttons and messages. */
 final class Ui {
-    static final String PRIMARY = "-fx-background-color: #1f4e79; -fx-text-fill: white; -fx-font-weight: bold;";
-    static final String LINK = "-fx-background-color: transparent; -fx-text-fill: #1f4e79; -fx-underline: true;";
-
     private Ui() { }
 
     /** "SAVINGS" -> "Savings" */
@@ -21,32 +18,32 @@ final class Ui {
 
     static Label title(String text) {
         Label label = new Label(text);
-        label.setStyle("-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #1f4e79;");
+        label.getStyleClass().add("title");
         return label;
     }
 
     static Label heading(String text) {
         Label label = new Label(text);
-        label.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
+        label.getStyleClass().add("heading");
         return label;
     }
 
     static Label errorLabel() {
         Label label = new Label();
-        label.setStyle("-fx-text-fill: #b00020;");
+        label.getStyleClass().add("error");
         label.setWrapText(true);
         return label;
     }
 
     static Button primary(String text) {
         Button button = new Button(text);
-        button.setStyle(PRIMARY);
+        button.getStyleClass().add("primary");
         return button;
     }
 
     static Button link(String text) {
         Button button = new Button(text);
-        button.setStyle(LINK);
+        button.getStyleClass().add("link");
         return button;
     }
 
