@@ -18,16 +18,31 @@ public class IndividualCustomer extends Customer {
     }
 
     @Override
-    public String getDisplayName() { return firstName + " " + surname; }
+    public String getDisplayName() {
+        return firstName + " " + surname;
+    }
 
     public boolean isEmployed() {
         return employmentDetails != null && employmentDetails.isComplete();
     }
 
-    public EmploymentDetails getEmploymentDetails() { return employmentDetails; }
-    public void setEmploymentDetails(EmploymentDetails details) { this.employmentDetails = details; }
+    public EmploymentDetails getEmploymentDetails() {
+        return employmentDetails;
+    }
 
-    public String getFirstName() { return firstName; }
-    public String getSurname() { return surname; }
-    public String getIdNumber() { return idNumber; }
+    public void setEmploymentDetails(EmploymentDetails details) {
+        this.employmentDetails = details;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getIdNumber() {
+        return idNumber;
+    }
 }

@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.YearMonth;
 
-/** Deposits and monthly interest only. It does not implement Withdrawable. */
 public class SavingsAccount extends Account implements InterestBearing {
     private final BigDecimal monthlyRate = new BigDecimal("0.0005"); // 0.05%
 

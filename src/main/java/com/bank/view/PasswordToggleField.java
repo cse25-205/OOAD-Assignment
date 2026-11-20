@@ -12,7 +12,7 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Line;
 
-/** A password box with an eye button: click it to show the typed text, click again to hide it. */
+// A password box with an eye button: click it to show the typed text, click again to hide it.
 public class PasswordToggleField extends HBox {
     private final PasswordField hidden = new PasswordField();
     private final TextField shown = new TextField();
@@ -56,9 +56,13 @@ public class PasswordToggleField extends HBox {
         (revealed ? shown : hidden).positionCaret(hidden.getText().length());
     }
 
-    public String getText() { return hidden.getText(); }
+    public String getText() {
+        return hidden.getText();
+    }
 
-    public void clear() { hidden.clear(); }
+    public void clear() {
+        hidden.clear();
+    }
 
     public void setPromptText(String text) {
         hidden.setPromptText(text);

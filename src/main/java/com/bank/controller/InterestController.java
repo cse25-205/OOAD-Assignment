@@ -10,7 +10,6 @@ import com.bank.util.BankException;
 import java.time.YearMonth;
 import java.util.UUID;
 
-/** Runs the monthly interest job. Safe to run repeatedly: a month is never credited twice (FR14). */
 public class InterestController {
     public record RunSummary(YearMonth period, int credited, int skipped, int failed) {
         @Override
@@ -28,10 +27,6 @@ public class InterestController {
         this.paymentDAO = paymentDAO;
     }
 
-    /**
-     * Pays interest for the month to every interest-bearing account that has not been paid yet.
-     * A FAILED payment leaves no CREDITED record, so the next run simply tries that account again.
-     */
     public RunSummary runMonthlyInterest(YearMonth period) {
         int credited = 0;
         int skipped = 0;
@@ -54,7 +49,6 @@ public class InterestController {
         return new RunSummary(period, credited, skipped, failed);
     }
 
-    /** @return true if the interest was credited and saved */
     private boolean persist(InterestPayment payment) {
         try {
             if (payment.getStatus() == PaymentStatus.CREDITED) {

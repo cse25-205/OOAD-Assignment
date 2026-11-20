@@ -29,7 +29,7 @@ public abstract class Customer {
 
     public abstract String getDisplayName();
 
-    /** Hashes the typed password and compares it with the stored hash. */
+    // Hashes the typed password and compares it with the stored hash.
     public boolean verifyPassword(String input) {
         return input != null && passwordHash.equals(hashPassword(input));
     }

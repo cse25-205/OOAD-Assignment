@@ -8,7 +8,7 @@ public class InvestmentAccount extends Account implements InterestBearing, Withd
     public static final BigDecimal MINIMUM_OPENING_DEPOSIT = new BigDecimal("500.00");
     private final BigDecimal monthlyRate = new BigDecimal("0.05"); // 5%
 
-    /** Opens a new account: the opening deposit must be at least BWP500.00. */
+    //Opens a new account: the opening deposit must be at least BWP500.00.
     public InvestmentAccount(String accountNumber, String branch, Customer owner, BigDecimal openingDeposit) {
         super(accountNumber, branch, owner);
         if (openingDeposit == null || openingDeposit.compareTo(MINIMUM_OPENING_DEPOSIT) < 0) {
@@ -17,7 +17,6 @@ public class InvestmentAccount extends Account implements InterestBearing, Withd
         deposit(openingDeposit, "Opening deposit");
     }
 
-    /** For the DAO only: rebuilds an existing account without the opening-deposit rule. */
     public InvestmentAccount(String accountNumber, String branch, Customer owner) {
         super(accountNumber, branch, owner);
     }

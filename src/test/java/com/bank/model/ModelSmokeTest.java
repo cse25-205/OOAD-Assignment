@@ -4,22 +4,29 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.YearMonth;
 
-/** Quick check of the business rules. Run with: java com.bank.model.ModelSmokeTest */
 public class ModelSmokeTest {
     static int passed = 0, failed = 0;
 
     static void check(String name, boolean ok) {
-        if (ok) passed++; else failed++;
+        if (ok) passed++;
+        else failed++;
         System.out.println((ok ? "PASS  " : "FAIL  ") + name);
     }
 
     static boolean throwsIAE(Runnable r) {
-        try { r.run(); return false; }
-        catch (IllegalArgumentException e) { return true; }
-        catch (RuntimeException e) { return false; }
+        try {
+            r.run();
+            return false;
+        } catch (IllegalArgumentException e) {
+            return true;
+        } catch (RuntimeException e) {
+            return false;
+        }
     }
 
-    static BigDecimal bd(String s) { return new BigDecimal(s); }
+    static BigDecimal bd(String s) {
+        return new BigDecimal(s);
+    }
 
     public static void main(String[] args) {
         IndividualCustomer iris = new IndividualCustomer("C1", "iris", Customer.hashPassword("pw1"),
@@ -45,7 +52,11 @@ public class ModelSmokeTest {
         sav.creditInterest(YearMonth.of(2026, 10));
         check("savings interest 0.05%", sav.getBalance().compareTo(bd("1000.50")) == 0);
         boolean dup = false;
-        try { sav.creditInterest(YearMonth.of(2026, 10)); } catch (IllegalStateException e) { dup = true; }
+        try {
+            sav.creditInterest(YearMonth.of(2026, 10));
+        } catch (IllegalStateException e) {
+            dup = true;
+        }
         check("second interest credit same month refused", dup);
 
         // Investment
@@ -84,7 +95,11 @@ public class ModelSmokeTest {
         p2.process();
         check("duplicate month -> FAILED", p2.getStatus() == PaymentStatus.FAILED);
         boolean noRetry = false;
-        try { p2.retry(); } catch (IllegalStateException e) { noRetry = true; }
+        try {
+            p2.retry();
+        } catch (IllegalStateException e) {
+            noRetry = true;
+        }
         check("retry refused when already credited", noRetry);
         check("cheque payment not allowed", throwsIAE(() -> new InterestPayment("P3", chq, YearMonth.of(2026, 11))));
 

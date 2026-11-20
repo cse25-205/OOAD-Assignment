@@ -19,7 +19,6 @@ import java.security.SecureRandom;
 import java.util.List;
 import java.util.function.Supplier;
 
-/** Mediates between the account screens and the model/DAOs. Every call requires a logged-in customer. */
 public class AccountController {
     public static final String DEFAULT_BRANCH = "Gaborone Main";
     private static final SecureRandom RANDOM = new SecureRandom();
@@ -41,12 +40,6 @@ public class AccountController {
         return accountDAO.findByCustomer(session.requireLogin());
     }
 
-    /**
-     * Opens an account for the logged-in customer.
-     * @param type "Savings", "Investment" or "Cheque"
-     * @param openingDeposit blank means zero (Savings and Cheque); at least 500.00 for Investment
-     * @param employerName employer details, used only for Cheque accounts
-     */
     public Account openAccount(String type, String openingDeposit, String employerName, String employerAddress) {
         Customer customer = session.requireLogin();
         String kind = type == null ? "" : type.trim().toUpperCase();
@@ -113,7 +106,6 @@ public class AccountController {
         return transaction;
     }
 
-    /** Transaction history for one of the customer's accounts, newest first. */
     public List<Transaction> history(String accountNumber) {
         return transactionDAO.findByAccount(ownedAccount(accountNumber).getAccountNumber());
     }
@@ -137,7 +129,6 @@ public class AccountController {
         return account;
     }
 
-    /** Model classes signal rule violations with IllegalArgument/IllegalState exceptions; show them as BankExceptions. */
     private static <T> T guard(Supplier<T> action) {
         try {
             return action.get();

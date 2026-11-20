@@ -10,7 +10,7 @@ import com.bank.util.Validate;
 import java.security.SecureRandom;
 import java.time.LocalDate;
 
-/** Validates registration requests (FR19) and creates individual or organisation customers. */
+//Validates registration requests (FR19) and creates individual or organisation customers.
 public class RegistrationController {
     private static final int MIN_PASSWORD_LENGTH = 8;
     private static final SecureRandom RANDOM = new SecureRandom();
@@ -86,7 +86,6 @@ public class RegistrationController {
         return hasName ? new EmploymentDetails(name.trim(), address.trim()) : null;
     }
 
-    /** Customer ids look like C48213907 (the database column holds up to 20 characters). */
     private String nextCustomerId() {
         String id;
         do {

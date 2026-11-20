@@ -7,7 +7,7 @@ import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
 
-/** Handles login, logout and the 5-minute inactivity timeout. Holds the current session. */
+// Handles login, logout and the 5-minute inactivity timeout. Holds the current session.
 public class LoginController {
     public static final int SESSION_TIMEOUT_MINUTES = 5;
     private static final String GENERIC_ERROR = "Invalid username or password.";
@@ -21,7 +21,7 @@ public class LoginController {
         this.customerDAO = customerDAO;
     }
 
-    /** Missing, unknown or wrong details all give the SAME message so nothing is revealed. */
+    // Missing, unknown or wrong details all give the SAME message so nothing is revealed.
     public Customer login(String username, String password) {
         if (username == null || username.isBlank() || password == null || password.isEmpty()) {
             throw new BankException(GENERIC_ERROR);
@@ -40,7 +40,6 @@ public class LoginController {
         lastActivity = null;
     }
 
-    /** Returns the logged-in customer, or throws if nobody is logged in or the session timed out. */
     public Customer requireLogin() {
         if (current == null) {
             throw new BankException("Please log in to continue.");
@@ -54,7 +53,6 @@ public class LoginController {
         return current;
     }
 
-    /** @return true while a customer is logged in and the session has not expired; logs out if it has. */
     public boolean checkSession() {
         if (current != null && isExpired()) {
             logout();
@@ -62,7 +60,6 @@ public class LoginController {
         return current != null;
     }
 
-    /** Records user activity (called by the GUI on mouse and key events). */
     public void touch() {
         if (current != null) {
             lastActivity = clock.instant();
@@ -71,7 +68,6 @@ public class LoginController {
 
     public boolean isLoggedIn() { return current != null; }
 
-    /** Lets tests move time forward. */
     public void setClock(Clock clock) { this.clock = clock; }
 
     private boolean isExpired() {

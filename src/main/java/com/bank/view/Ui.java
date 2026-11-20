@@ -1,17 +1,18 @@
 package com.bank.view;
 
 import java.util.function.Function;
+
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.beans.property.SimpleStringProperty;
 
-/** Small helpers so every screen uses the same labels, buttons and messages. */
-final class Ui {
-    private Ui() { }
 
-    /** "SAVINGS" -> "Savings" */
+final class Ui {
+    private Ui() {
+    }
+
     static String titleCase(String text) {
         return text.isEmpty() ? text : text.charAt(0) + text.substring(1).toLowerCase();
     }

@@ -10,7 +10,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
-/** Boundary class: shows the login form and passes the input to LoginController. No logic here. */
 public class LoginView extends VBox {
 
     public LoginView(Navigator navigator, LoginController controller, String message) {

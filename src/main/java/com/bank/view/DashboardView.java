@@ -7,8 +7,10 @@ import com.bank.model.Account;
 import com.bank.util.BankException;
 import com.bank.util.Money;
 import com.bank.model.Transaction;
+
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
+
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -140,8 +142,15 @@ public class DashboardView extends BorderPane {
     private Tab historyTab() {
         historyAccount.setPromptText("Choose an account");
         historyAccount.setConverter(new StringConverter<>() {
-            @Override public String toString(Account a) { return a == null ? "" : Ui.titleCase(a.getAccountType()) + " - " + a.getAccountNumber(); }
-            @Override public Account fromString(String s) { return null; }
+            @Override
+            public String toString(Account a) {
+                return a == null ? "" : Ui.titleCase(a.getAccountType()) + " - " + a.getAccountNumber();
+            }
+
+            @Override
+            public Account fromString(String s) {
+                return null;
+            }
         });
         historyAccount.setOnAction(e -> act(this::loadHistory));
 
@@ -200,7 +209,6 @@ public class DashboardView extends BorderPane {
         }
     }
 
-    /** Runs a user action, shows any BankException as a message, then refreshes the tables. */
     private void act(Runnable action) {
         try {
             action.run();

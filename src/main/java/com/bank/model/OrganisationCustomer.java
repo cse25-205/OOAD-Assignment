@@ -20,10 +20,23 @@ public class OrganisationCustomer extends Customer {
     }
 
     @Override
-    public String getDisplayName() { return organisationName; }
+    public String getDisplayName() {
+        return organisationName;
+    }
 
-    public String getOrganisationName() { return organisationName; }
-    public String getRegistrationNumber() { return registrationNumber; }
-    public LocalDate getRegistrationDate() { return registrationDate; }
-    public String getContactPerson() { return contactPerson; }
+    public String getOrganisationName() {
+        return organisationName;
+    }
+
+    public String getRegistrationNumber() {
+        return registrationNumber;
+    }
+
+    public LocalDate getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public String getContactPerson() {
+        return contactPerson;
+    }
 }

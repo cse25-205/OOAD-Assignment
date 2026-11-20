@@ -2,8 +2,10 @@ package com.bank.view;
 
 import com.bank.controller.RegistrationController;
 import com.bank.util.BankException;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -17,7 +19,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-/** Boundary class: registration form for individuals and organisations. No business logic here. */
 public class RegisterView extends ScrollPane {
     private final GridPane form = new GridPane();
     private final List<Node> individualOnly = new ArrayList<>();
@@ -106,7 +107,13 @@ public class RegisterView extends ScrollPane {
 
     private void showFieldsFor(String customerType) {
         boolean individual = "Individual".equals(customerType);
-        for (Node n : individualOnly) { n.setVisible(individual); n.setManaged(individual); }
-        for (Node n : organisationOnly) { n.setVisible(!individual); n.setManaged(!individual); }
+        for (Node n : individualOnly) {
+            n.setVisible(individual);
+            n.setManaged(individual);
+        }
+        for (Node n : organisationOnly) {
+            n.setVisible(!individual);
+            n.setManaged(!individual);
+        }
     }
 }

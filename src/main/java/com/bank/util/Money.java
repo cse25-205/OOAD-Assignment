@@ -3,7 +3,6 @@ package com.bank.util;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-/** Monetary policy: BigDecimal, two decimal places, HALF_UP rounding. */
 public final class Money {
     public static final BigDecimal ZERO = new BigDecimal("0.00");
 
@@ -13,7 +12,6 @@ public final class Money {
         return value.setScale(2, RoundingMode.HALF_UP);
     }
 
-    /** Parses user text such as "1,250.50". */
     public static BigDecimal parse(String text) {
         if (text == null || text.isBlank()) {
             throw new BankException("Enter an amount greater than zero, for example 150.00.");

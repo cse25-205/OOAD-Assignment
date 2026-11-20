@@ -4,14 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-/** The colour themes the user can switch between. Each one is a small CSS file in resources/css/themes. */
 public enum Theme {
     BOTSWANA_BLUE("Botswana Blue", "blue"),
-    DARK("Dark Mode", "dark"),
-    KALAHARI_SAND("Kalahari Sand", "sand"),
-    OKAVANGO_GREEN("Okavango Green", "green"),
-    MIDNIGHT_PURPLE("Midnight Purple", "purple"),
-    HIGH_CONTRAST("High Contrast", "contrast");
+    DARK("Dark Mode", "dark");
 
     private final String label;
     private final String file;
@@ -21,24 +16,22 @@ public enum Theme {
         this.file = file;
     }
 
-    /** True while this theme's CSS file is still in resources/css/themes. Delete the file to remove the theme. */
     boolean isAvailable() {
         return Theme.class.getResource(path()) != null;
     }
 
-    /** Every theme whose CSS file exists (this is what the drop-down offers). */
     public static List<Theme> available() {
         return Arrays.stream(values()).filter(Theme::isAvailable).toList();
     }
 
-    private String path() { return "/css/themes/" + file + ".css"; }
+    private String path() {
+        return "/css/themes/" + file + ".css";
+    }
 
-    /** The shared stylesheet followed by this theme's colours. */
     List<String> stylesheets() {
         return List.of(url("/css/app.css"), url(path()));
     }
 
-    /** The saved theme if it still exists, otherwise the first theme that does. */
     static Theme fromName(String name) {
         List<Theme> themes = available();
         if (themes.isEmpty()) {
@@ -57,5 +50,7 @@ public enum Theme {
     }
 
     @Override
-    public String toString() { return label; }
+    public String toString() {
+        return label;
+    }
 }

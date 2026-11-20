@@ -2,7 +2,6 @@ package com.bank.model;
 
 import java.math.BigDecimal;
 
-/** Only an employed individual (with complete employment details) can own one. */
 public class ChequeAccount extends Account implements Withdrawable {
 
     public ChequeAccount(String accountNumber, String branch, IndividualCustomer owner) {

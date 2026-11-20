@@ -3,7 +3,6 @@ package com.bank.model;
 import java.math.BigDecimal;
 import java.time.YearMonth;
 
-/** One monthly interest payment: PENDING -> CREDITED, or PENDING -> FAILED -> (retry) -> PENDING. */
 public class InterestPayment {
     private final String paymentId;
     private final Account account;
@@ -22,7 +21,7 @@ public class InterestPayment {
         this.period = period;
     }
 
-    /** Calculates and credits the interest. Any error moves the payment to FAILED. */
+    // Calculates and credits the interest. Any error moves the payment to FAILED.
     public void process() {
         if (status != PaymentStatus.PENDING) {
             throw new IllegalStateException("Only a PENDING payment can be processed");
@@ -39,7 +38,7 @@ public class InterestPayment {
         }
     }
 
-    /** Retries a FAILED payment, unless interest was already credited for that account and month. */
+    //Retries a FAILED payment, unless interest was already credited for that account and month.
     public void retry() {
         if (status != PaymentStatus.FAILED) {
             throw new IllegalStateException("Only a FAILED payment can be retried");
@@ -51,11 +50,31 @@ public class InterestPayment {
         process();
     }
 
-    public String getPaymentId() { return paymentId; }
-    public Account getAccount() { return account; }
-    public YearMonth getPeriod() { return period; }
-    public BigDecimal getAmount() { return amount; }
-    public PaymentStatus getStatus() { return status; }
-    public String getFailureReason() { return failureReason; }
-    public Transaction getTransaction() { return transaction; }
+    public String getPaymentId() {
+        return paymentId;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public YearMonth getPeriod() {
+        return period;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public PaymentStatus getStatus() {
+        return status;
+    }
+
+    public String getFailureReason() {
+        return failureReason;
+    }
+
+    public Transaction getTransaction() {
+        return transaction;
+    }
 }

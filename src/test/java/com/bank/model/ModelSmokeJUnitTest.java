@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-/** Lets Maven run the starter's ModelSmokeTest checks as part of "mvn test". */
 class ModelSmokeJUnitTest {
     @Test
     void allModelRulesPass() {

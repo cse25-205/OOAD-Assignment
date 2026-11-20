@@ -6,7 +6,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-/** The "System Scheduler" actor: starts monthly interest automatically on the first day of each month. */
+//The "System Scheduler" actor: starts monthly interest automatically on the first day of each month.
 public class InterestScheduler {
     private final InterestController interestController;
     private ScheduledExecutorService executor;
@@ -24,7 +24,6 @@ public class InterestScheduler {
         executor.scheduleAtFixedRate(this::runIfDue, 1, 60, TimeUnit.MINUTES);
     }
 
-    /** Runs on day 1 of the month; failed payments are retried on the next run. Repeat runs are harmless. */
     void runIfDue() {
         if (LocalDate.now().getDayOfMonth() == 1) {
             try {

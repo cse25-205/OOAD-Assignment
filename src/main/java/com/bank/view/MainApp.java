@@ -11,10 +11,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.InputEvent;
 import javafx.stage.Stage;
+
 import java.util.prefs.Preferences;
+
 import javafx.util.Duration;
 
-/** Application entry point: wires the layers together and switches between screens. */
 public class MainApp extends Application implements Navigator {
     private Stage stage;
     private AppContext app;
@@ -75,7 +76,9 @@ public class MainApp extends Application implements Navigator {
     }
 
     @Override
-    public Theme theme() { return theme; }
+    public Theme theme() {
+        return theme;
+    }
 
     @Override
     public void setTheme(Theme newTheme) {
