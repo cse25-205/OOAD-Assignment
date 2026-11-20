@@ -1,6 +1,6 @@
 # Integration Test Report
 
-**Student:** Lone Kufuna  **Registration number:** ____  
+**Student:** Lone Kufuna  
 **Module:** CSE202 Object Oriented Analysis & Design with Java  **Date run:** 20 November 2026
 
 ## Approach
@@ -51,8 +51,6 @@ All passed. No defects were found in this test round.
 - Interest scheduling (day 1 of each month) is covered by running `InterestController` directly.
 
 ## Manual walkthrough of the GUI
-
-Tick each item once you have done it on the running application.
 
 - [ ] Registered a new individual and a new organisation, then logged in as each
 - [ ] Wrong password and unknown username both show the same message
