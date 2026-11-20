@@ -1,6 +1,6 @@
 # Integration Test Report
 
-**Student:** Lone Miso Kufuna (cse25-205)  **Module:** CSE202  **Date run:** ____
+**Student:** Lone Miso Kufuna (cse25-205)  **Module:** CSE202  **Date run:** 20 November 2026
 
 ## Approach
 
@@ -15,28 +15,29 @@ Run with `mvn clean test`. Paste the final summary of that command in the Result
 
 | ID | User flow tested | Expected outcome | Requirement | Result |
 |---|---|---|---|---|
-| IT01 | Register, then log in | Login succeeds, display name correct | FR1, FR2 | |
-| IT02 | Wrong password, unknown user, empty fields | Same generic error each time | FR17 | |
-| IT03 | Inspect stored password | Stored as the 64-character SHA-256 hash, not plain text | NFR Security | |
-| IT04 | Duplicate username, duplicate ID, missing field | Rejected with the cause named | FR19 | |
-| IT05 | Open Savings, deposit 250.50 | DB balance 350.50, history has 2 entries, newest first | FR8, FR12 | |
-| IT06 | Deposit "", "abc", 0, -5, 1.005 | All rejected, DB balance unchanged | FR10 | |
-| IT07 | Withdraw from Savings | Rejected, balance unchanged | FR5 | |
-| IT08 | Investment with 499.99, blank, 500.00 | First two rejected, 500.00 accepted | FR6 | |
-| IT09 | Withdraw 100 then 500.01 from Investment of 600 | First works (500.00 left), second rejected | FR9, FR10 | |
-| IT10 | Cheque for unemployed, employed, organisation | Only the employed individual succeeds | FR3, FR7 | |
-| IT11 | Open 2 Savings and 1 Investment | Customer holds 3 accounts | FR4 | |
-| IT12 | Customer B uses Customer A's account | Rejected, A's balance unchanged | NFR Security | |
-| IT13 | Use accounts after logout | Rejected | FR2, FR18 | |
-| IT14 | Idle 4 min, then 10 min | Valid at 4, ended at 10 | NFR Security | |
-| IT15 | Run interest twice for one month, then next month | 0.50 and 50.00 once; second run credits nothing; Cheque none | FR11, FR14 | |
-| IT16 | Load sample data twice, log in as sample user | 10 customers, 17 accounts, loaded once | Brief: sample records | |
+| IT01 | Register, then log in | Login succeeds, display name correct | FR1, FR2 | Pass |
+| IT02 | Wrong password, unknown user, empty fields | Same generic error each time | FR17 | Pass |
+| IT03 | Inspect stored password | Stored as the 64-character SHA-256 hash, not plain text | NFR Security | Pass |
+| IT04 | Duplicate username, duplicate ID, missing field | Rejected with the cause named | FR19 | Pass |
+| IT05 | Open Savings, deposit 250.50 | DB balance 350.50, history has 2 entries, newest first | FR8, FR12 | Pass |
+| IT06 | Deposit "", "abc", 0, -5, 1.005 | All rejected, DB balance unchanged | FR10 | Pass |
+| IT07 | Withdraw from Savings | Rejected, balance unchanged | FR5 | Pass |
+| IT08 | Investment with 499.99, blank, 500.00 | First two rejected, 500.00 accepted | FR6 | Pass |
+| IT09 | Withdraw 100 then 500.01 from Investment of 600 | First works (500.00 left), second rejected | FR9, FR10 | Pass |
+| IT10 | Cheque for unemployed, employed, organisation | Only the employed individual succeeds | FR3, FR7 | Pass |
+| IT11 | Open 2 Savings and 1 Investment | Customer holds 3 accounts | FR4 | Pass |
+| IT12 | Customer B uses Customer A's account | Rejected, A's balance unchanged | NFR Security | Pass |
+| IT13 | Use accounts after logout | Rejected | FR2, FR18 | Pass |
+| IT14 | Idle 4 min, then 10 min | Valid at 4, ended at 10 | NFR Security | Pass |
+| IT15 | Run interest twice for one month, then next month | 0.50 and 50.00 once; second run credits nothing; Cheque none | FR11, FR14 | Pass |
+| IT16 | Load sample data twice, log in as sample user | 10 customers, 17 accounts, loaded once | Brief: sample records | Pass |
 
 ## Results
 
-```
-(paste the "Tests run: 17, Failures: 0, Errors: 0, Skipped: 0" summary from mvn clean test here)
-```
+Tests run: 17, Failures: 0, Errors: 0, Skipped: 0
+BUILD SUCCESS
+
+16 integration tests plus 1 test that runs the 26 model checks.
 
 ## Observations and limitations
 
