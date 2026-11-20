@@ -1,6 +1,7 @@
 # Integration Test Report
 
-**Student:** Lone Miso Kufuna (cse25-205)  **Module:** CSE202  **Date run:** 20 November 2026
+**Student:** Lone Kufuna  **Registration number:** ____  
+**Module:** CSE202 Object Oriented Analysis & Design with Java  **Date run:** 20 November 2026
 
 ## Approach
 
@@ -9,7 +10,8 @@
 reads the database back to confirm the stored state. The database is reset before every test.
 `ModelSmokeJUnitTest` runs the 26 model checks from `ModelSmokeTest` (OOP rules, interest, the interest payment state machine).
 
-Run with `mvn clean test`. Paste the final summary of that command in the Results section.
+Run with `mvn clean test`. The same result was obtained in IntelliJ IDEA on Windows and in a fresh GitHub Codespace
+(Java 21).
 
 ## Test cases
 
@@ -34,13 +36,30 @@ Run with `mvn clean test`. Paste the final summary of that command in the Result
 
 ## Results
 
+```
 Tests run: 17, Failures: 0, Errors: 0, Skipped: 0
 BUILD SUCCESS
+```
 
-16 integration tests plus 1 test that runs the 26 model checks.
+16 integration tests (IT01 to IT16) plus 1 test (`ModelSmokeJUnitTest`) that runs the 26 model checks.
+All passed. No defects were found in this test round.
 
 ## Observations and limitations
 
 - The JavaFX screens are not driven by an automated GUI robot. They contain no logic, so the tests start at
-  the controller. Walk through login, deposit, withdraw and history by hand and note it here.
+  the controller. They were checked by hand instead (see the checklist below).
 - Interest scheduling (day 1 of each month) is covered by running `InterestController` directly.
+
+## Manual walkthrough of the GUI
+
+Tick each item once you have done it on the running application.
+
+- [ ] Registered a new individual and a new organisation, then logged in as each
+- [ ] Wrong password and unknown username both show the same message
+- [ ] Opened Savings, Investment (400.00 refused, 500.00 accepted) and Cheque accounts
+- [ ] Deposit and withdrawal updated the balance; withdrawal from Savings was refused; overdraft was refused
+- [ ] History tab lists transactions newest first
+- [ ] Interest button credited once; pressing it a second time credited nothing
+- [ ] Password eye icon shows and hides the typed password
+- [ ] Theme drop-down switches between Botswana Blue and Dark Mode
+- [ ] Log out returns to the login screen
