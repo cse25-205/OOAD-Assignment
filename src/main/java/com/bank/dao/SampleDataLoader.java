@@ -14,7 +14,7 @@ import java.time.LocalDate;
 
 //Inserts demonstration data (10 customers, 17 accounts, many transactions) when the database is empty.
 public final class SampleDataLoader {
-    public static final String SAMPLE_PASSWORD = "Bank@2026";
+    public static final String SAMPLE_PASSWORD = "bank@2026";
     private static final String BRANCH = "Gaborone Main";
 
     private SampleDataLoader() { }
